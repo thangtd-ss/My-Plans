@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import "./styles/index.css"
+import Cloud from "./components/Cloud"
+import Sun from "./components/Sun"
+import NotePad from "./components/NotePad"
+import Calendar from "./components/Calendar"
+import NoteList from "./components/NoteList"
+import Pencil from "./components/Pencil"
+import BotFlower from "./components/BotFlower"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todo-list">
+      <Cloud />
+      <Sun />
+      <div className="col md-12 wrapper-todo">
+        <div className="row">
+          <div className="col md-3">
+            <NotePad />
+          </div>
+          <div className="col md-1">
+            <div className="row">
+            <Pencil />
+            <Calendar />
+            </div>
+          </div>
+          <div className="col md-4">
+            <NoteList />
+          </div>
+          <div className="col md-2">
+            <BotFlower />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
