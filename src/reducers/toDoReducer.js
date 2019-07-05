@@ -1,19 +1,16 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from '../constants/actionTypes';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED, CLEAR_ALL } from '../constants/actionTypes';
 
-const initialState = [{
-    text: 'Use Redux',
-    marked: false,
-    id: 0
-}];
+const initialState = [];
 
 export default function todos(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case ADD_TODO:
-      return [{
-          id: (state.length === 0) ? 0 : state[0].id + 1,
+      return [...state, {
+          id: (state.length === 0) ? 0 : state.length + 1,
           marked: false,
           text: action.text
-      }, ...state];
+      }];
     case DELETE_TODO:
       return state.filter((todo) => todo.id !== action.id);
     case EDIT_TODO:
@@ -25,6 +22,8 @@ export default function todos(state = initialState, action) {
       return state.map((todo) => ({...todo, marked: !areAllMarked}));
     case CLEAR_MARKED:
       return state.filter((todo) => todo.marked === false);
+    case CLEAR_ALL:
+      return []
     default:
       return state;
   }

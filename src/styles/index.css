@@ -9,6 +9,27 @@ body {
   font-size: 33px;
 }
 
+.note-content {
+  top: 50px;
+  position: absolute;
+  width: 304px;
+  min-height: 237px;
+  padding: 30px;
+  font-size: 19px;
+  line-height: 31px;
+  text-align: left;
+  resize: none;
+  background: transparent !important;
+  height: 318px;
+  /* color: #717171; */
+  border: none;
+  overflow: hidden;
+}
+
+span{
+  cursor: pointer;
+}
+
 .text {
   font-size: 19px;
   position: absolute;
@@ -23,35 +44,18 @@ body {
 }
 
 .todo-list {
-  width: 100%;
-  min-width: 1024px;
-  max-width: 1024px;
+    width: 100%;
+    min-width: 1024px;
+    max-width: 1024px;
+    margin: auto;
+    top: 100px;
+    position: relative;
 }
 
 .wrapper-todo {
   position: relative;
   height: 100%;
   top: 160px;
-}
-
-.div-1 {
-  height: 167px;
-  width: 100%;
-  float: left;
-}
-
-.div-4 {
-  border: 1px solid red;
-  width: 570px;
-  height: 100px;
-  float: left;
-}
-
-.div-5 {
-  border: 1px solid red;
-  width: 713px;
-  height: 100px;
-  float: left;
 }
 
 /**/
@@ -704,6 +708,7 @@ body {
 
 .done-task {
   color: green;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -713,6 +718,23 @@ body {
   /* left: -232px; */
   top: -70px;
   right: -130px;
+  z-index: -1;
+}
+
+.completed-task {
+  padding: 16px;
+  font-size: 43px;
+  color: #043523;
+}
+
+.line-through{
+  text-decoration: line-through;
+}
+
+.inprogress-task {
+  padding: 16px;
+  font-size: 43px;
+  color: mediumseagreen;
 }
 
 .box {
