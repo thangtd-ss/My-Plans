@@ -1,5 +1,4 @@
 import React from "react";
-import ContentEditable from 'react-contenteditable';
 import {connect} from 'react-redux';
 import * as TodoActions from "../actions/TodoActions"
 
@@ -8,26 +7,52 @@ class NotePad extends React.Component {
     super()
     this.contentEditable = React.createRef();
     this.state = {html: "", todos: []};
+    this.keyPress = this.keyPress.bind(this);
   };
- 
+
   handleChange = event => {
-    let keyCode = event.which || event.keyCode;
-    let childNodes = event.target.children;
-    console.log(childNodes)
+    this.setState({html: event.target.value});
   };
- 
+
+  keyPress(e){
+    let taskLists = this.state.html.split("\n");
+
+    if(e.keyCode == 13){
+      // this.props.clearAll()
+      // let todos = []
+
+      // taskLists.map(task => {
+      //   if(task.length > 0){
+      //     todos.push(task)
+      //     this.props.addTodo(task)
+      //   }
+      // });
+
+      // let old = this.props.toDoReducer
+      let task = taskLists.pop()
+      if(task.length >0)
+        this.props.addTodo(task)
+      // this.setState({
+      //   todos
+      // });
+    }
+  }
+
   render = () => {
+    console.log(this.props)
     return (
-    <div className="notepad">
-    <div className="top">Add ToDos</div>
-    <ContentEditable className="paper-note"
-      innerRef={this.contentEditable}
-      html={this.state.html} // innerHTML of the editable div
-      disabled={false}       // use true to disable editing
-      onKeyPress={this.handleChange} // handle innerHTML change
-      tagName='article' // Use a custom HTML tag (uses a div by default)
-    />
-    </div>)
+      <div className="notepad">
+        <div className="top">Add ToDos</div>
+        <div className="paper-note">
+          <textarea
+            value={this.state.html}
+            className="note-content row"
+            onChange={this.handleChange}
+            onKeyDown={this.keyPress}
+          />
+        </div>
+      </div>
+    )
   };
 }
 

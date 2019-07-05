@@ -24,7 +24,7 @@ export function editTodo(id, text){
 
 export function markTodo(id){
   return {
-    type: types.ADD_TODO,
+    type: types.MARK_TODO,
     id
   }
 }
@@ -38,5 +38,11 @@ export function markAll(){
 export function clearMarked(){
   return {
     type: types.CLEAR_MARKED,
+  }
+}
+
+export function clearAll(){
+  return {
+    type: types.CLEAR_ALL,
   }
 }
